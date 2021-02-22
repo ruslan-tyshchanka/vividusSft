@@ -16,6 +16,10 @@ When I click on all elements located `By.xpath(//span[text()="Sign up"])`
 Examples:
 |userNum|
 |User1  |
+|User2  |
+|User3  |
+|User4  |
+|User5  |
 
 Scenario: Create a board
 Meta:
@@ -31,7 +35,6 @@ Given I am on the main application page
 When I login with email '${existingProfileEmail}' and password '${existingProfilePassword}'
 When I wait until element located `By.xpath(//div[contains(@title, '${existingProfileName}')])` appears
 
-
 Scenario: Verify Profile
 Meta:
 	@UI
@@ -41,6 +44,14 @@ When I change context to element located `By.xpath(//section[@data-test-id="head
 Then number of elements found by `By.xpath(//div[text()="${existingProfileName}"])` is = `1`
 Then number of elements found by `By.xpath(//span[text()="${existingProfileEmail}"])` is = `1`
 When I reset context
+
+Scenario: Verify some page elements on home page
+Meta:
+	@UI
+When the condition '#{eval("${boardName}"!="")}' is true I do
+|step|
+|Given I am on a page with the URL 'https://trello.com/vividus_test1/boards'       |
+|Then number of elements found by `By.xpath(//div[@title="${boardName}"])` is = `1`|
 
 Scenario: Add visual checks to pages
 Meta:
