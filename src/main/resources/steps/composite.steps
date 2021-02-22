@@ -1,1 +1,9 @@
-Composite
+Composite: When I login with email '$email' and password '$password'
+When I click on all elements located `By.xpath(//a[text()="Log in"])`
+Then the page with the URL containing 'login' is loaded
+When I enter `<email>` in field located `By.xpath(//input[@placeholder="Enter email"])`
+When I wait until element located `By.xpath(//input[@value="Log in with Atlassian"])` appears
+When I click on element located `By.xpath(//input[@value="Log in with Atlassian"])`
+When I wait until element located `By.xpath(//input[@placeholder="Enter password"])` appears
+When I enter `<password>` in field located `By.xpath(//input[@placeholder="Enter password"])`
+When I click on element located `By.xpath(//*[text()="Log in"])`
